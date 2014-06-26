@@ -4,6 +4,8 @@ describe PortfolioItem::Image do
   let(:image) { PortfolioItem::Image.new }
 
   it "saves images and some values" do
+
+    # assign
     image.image = File.open(Rails.root.join('spec/fixtures/test.gif'))
     image.image.mime_type.should eql('image/gif')
     image.save!
@@ -14,6 +16,9 @@ describe PortfolioItem::Image do
     image.image_height.should eql(154)
 
     # FIXME why doesn't this work
-    # image.image_mime_type.should eql('image/gif')
+    #image.image_mime_type.should eql('image/gif')
+
+    p image.image.public_methods(:false).sort#updated#_at
+    p image.image.meta
   end
 end
