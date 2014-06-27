@@ -6,42 +6,42 @@ describe PortfolioItem do
   
   let(:image_fixture) { File.open(Rails.root.join('spec/fixtures/saturn_clean.png')) }
 
-  it "saves the different associations" do
+  # older tests & ideas ...
+  # it "saves the different associations" do
+  #   # create 4 PI::Image objects
+  #   foo_image = portfolio_item.images.create(name: "foo", kind: "foo")
+  #   portfolio_item.images.create(name: "bar", kind: "bar")
+  #   portfolio_item.images.create(name: "baz", kind: "baz")
+  #   portfolio_item.images.create(name: "baz")
+  #   portfolio_item.images.count.should eql(4)
 
-    # create 4 PI::Image objects
-    foo_image = portfolio_item.images.create(name: "foo", kind: "foo")
-    portfolio_item.images.create(name: "bar", kind: "bar")
-    portfolio_item.images.create(name: "baz", kind: "baz")
-    portfolio_item.images.create(name: "baz")
-    portfolio_item.images.count.should eql(4)
+  #   # kind should be set when given
+  #   portfolio_item.images.where("kind IS NOT NULL").count.should eql(3)
 
-    # kind should be set when given
-    portfolio_item.images.where("kind IS NOT NULL").count.should eql(3)
+  #   # verify kind is passed on to the object from the conditions hash, in has_many association
+  #   image = portfolio_item.bar_images.create(name: "bar2")
+  #   image.kind.should eql("bar")
+  #   portfolio_item.bar_images.count.should eql(2)
+  #   portfolio_item.bar_images.map(&:name).should eql(['bar', 'bar2'])
 
-    # verify kind is passed on to the object from the conditions hash, in has_many association
-    image = portfolio_item.bar_images.create(name: "bar2")
-    image.kind.should eql("bar")
-    portfolio_item.bar_images.count.should eql(2)
-    portfolio_item.bar_images.map(&:name).should eql(['bar', 'bar2'])
+  #   # verify kind is passed on to the object from the conditions hash, in has_one association
+  #   image = portfolio_item.foo_image
+  #   image.should eql(foo_image)
+  #   image.kind.should eql("foo")
+  #   portfolio_item.foo_image.destroy
 
-    # verify kind is passed on to the object from the conditions hash, in has_one association
-    image = portfolio_item.foo_image
-    image.should eql(foo_image)
-    image.kind.should eql("foo")
-    portfolio_item.foo_image.destroy
+  #   # verify build_foo_image replaces an existing image
+  #   portfolio_item.build_foo_image(name: "torial")
+  #   image = portfolio_item.foo_image
+  #   image.name.should eql("torial")
+  #   portfolio_item.foo_image.destroy
 
-    # verify build_foo_image replaces an existing image
-    portfolio_item.build_foo_image(name: "torial")
-    image = portfolio_item.foo_image
-    image.name.should eql("torial")
-    portfolio_item.foo_image.destroy
+  #   # verify image can be assigned
+  #   image = PortfolioItem::Image.create!(name: "torial2")
+  #   portfolio_item.foo_image = image
+  #   # BEWARE: image.kind == nil
 
-    # verify image can be assigned
-    image = PortfolioItem::Image.create!(name: "torial2")
-    portfolio_item.foo_image = image
-    # BEWARE: image.kind == nil
-
-  end
+  # end
 
   it "#tile_widget_uploaded_image is not present by default" do
     portfolio_item.tile_widget_uploaded_image.should_not be_present
