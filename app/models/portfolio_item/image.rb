@@ -6,6 +6,9 @@ class PortfolioItem::Image < ActiveRecord::Base
   #belongs_to :portfolio_item # maybe we can even prevent making this association available here ...
   #attr_accessible :name, :image, :kind
 
+  validates_inclusion_of :origin, in: %i(tile_widget_upload detail_widget_upload and_so_on), allow_nil: true
+  validates_inclusion_of :slot, in: %i(tile detail), allow_nil: true
+
   dragonfly_accessor :image do
     after_assign :generate_medium_image
     after_assign :set_image_updated_at
