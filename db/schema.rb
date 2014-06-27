@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140623152808) do
+ActiveRecord::Schema.define(:version => 20140627145304) do
 
   create_table "portfolio_item_images", :force => true do |t|
     t.string   "name"
@@ -25,6 +25,9 @@ ActiveRecord::Schema.define(:version => 20140623152808) do
     t.integer  "portfolio_item_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "origin"
+    t.string   "slot"
+    t.string   "medium_image_uid"
   end
 
   create_table "portfolio_items", :force => true do |t|
