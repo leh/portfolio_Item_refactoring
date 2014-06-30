@@ -4,7 +4,7 @@ module PortfolioItem::ImagesConcern
  
   included do
     has_many :images, dependent: :destroy
-    private :images # only use images through the methods #tile_widget_uploaded_image
+    private :images, :"images=" # only use images through the methods #tile_widget_uploaded_image
   end
 
   def tile_widget_uploaded_image(size = :original)
